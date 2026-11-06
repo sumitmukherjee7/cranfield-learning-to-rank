@@ -1,0 +1,5 @@
+# Python 3.10 or newer. Tested with the versions in brackets.
+numpy>=1.24          # [2.5.4]
+scipy>=1.10          # [1.18.1]
+scikit-learn>=1.3    # [1.9.1]
+nltk>=3.8            # [3.10.4] only the Porter stemmer is used, no NLTK data download needed
