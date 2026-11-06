@@ -1,0 +1,41 @@
+[    0.3s] 1400 docs, 225 queries, train=157 test=68
+[   26.1s] A fraction/MAP: w=[0.4 0.1 0.2 0.3] test MAP=0.2694
+[   29.5s] A fraction/MSE: w=[0. 0. 0. 1.] test MAP=0.1815
+[   55.7s] A idf/MAP: w=[0.3  0.35 0.1  0.25] test MAP=0.3048
+[   59.2s] A idf/MSE: w=[0. 0. 0. 1.] test MAP=0.2340
+[   81.8s] A any/MAP: w=[0.15 0.05 0.05 0.75] test MAP=0.0492
+[   85.2s] A any/MSE: w=[0.45 0.05 0.2  0.3 ] test MAP=0.0480
+[  103.3s] A all/MAP: w=[0. 0. 0. 1.] test MAP=0.0222
+[  106.8s] A all/MSE: w=[0. 0. 0. 1.] test MAP=0.0222
+[  107.0s] A fraction step 0.25: [0.5 0.  0.  0.5] train 0.2718
+[  109.7s] A fraction step 0.1: [0.4 0.1 0.2 0.3] train 0.2764
+[  133.9s] A fraction step 0.05: [0.4 0.1 0.2 0.3] train 0.2764
+[  134.2s] A idf step 0.25: [0.25 0.25 0.25 0.25] train 0.3120
+[  137.2s] A idf step 0.1: [0.5 0.  0.1 0.4] train 0.3130
+[  163.9s] A idf step 0.05: [0.3  0.35 0.1  0.25] train 0.3151
+[  215.7s] B select: pointwise C=0.0003 cv=0.3276
+[  216.2s] B pointwise: C=0.0003 test MAP=0.3248
+[  217.2s] B pairwise: C=0.0003 test MAP=0.3168
+[  229.3s] B ablation global z-score normalisation: MAP=0.3184
+[  231.1s] B ablation + title and body streams (64 features): MAP=0.3252
+[  232.1s] B ablation pairwise (C=0.0003), 100 hard + 200 random negatives: MAP=0.3168
+[  232.4s] B ablation pairwise (C=0.0003), 50 hard + 50 random negatives: MAP=0.2966
+[  233.3s] B ablation pairwise (C=0.0003), 200 hard negatives only: MAP=0.2786
+[  233.9s] B ablation without BM25/VSM/Boolean (features 1-19): MAP=0.3088
+[  234.4s] B ablation without TF*IDF stats (15-19): MAP=0.3190
+[  234.6s] B ablation only 20-22 (Boolean, VSM, BM25): MAP=0.3202
+[  237.7s] tuned BM25 k1=2.5 b=0.9
+[  244.2s] tuned PRF docs=15 terms=60 lambda=0.3
+[  294.2s] ladder 22 features (Method B): pointwise C=0.0003 cv=0.3276 test MAP=0.3248
+[  342.4s] ladder + idf-weighted Boolean feature (20): pointwise C=0.0003 cv=0.3296 test MAP=0.3188
+[  392.3s] ladder + tuned BM25 parameters: pairwise C=0.0003 cv=0.3302 test MAP=0.3237
+[  449.9s] ladder + PRF BM25 feature (23 features): pairwise C=0.003 cv=0.3748 test MAP=0.3685
+[  511.8s] ladder + title and body BM25 (25 features): pairwise C=0.003 cv=0.3747 test MAP=0.3717
+[  511.8s] final Method B+ = + PRF BM25 feature (23 features)
+[  512.3s] comparison done
+[  577.4s] CV fold 1: Method A=0.2672 Method A+=0.3072 Method B=0.3073 Method B+=0.3587 BM25=0.3017 BM25 + PRF (tuned)=0.3598
+[  641.3s] CV fold 2: Method A=0.2724 Method A+=0.3029 Method B=0.2955 Method B+=0.355 BM25=0.2992 BM25 + PRF (tuned)=0.3544
+[  705.1s] CV fold 3: Method A=0.2978 Method A+=0.3333 Method B=0.3743 Method B+=0.4249 BM25=0.3727 BM25 + PRF (tuned)=0.422
+[  768.7s] CV fold 4: Method A=0.2497 Method A+=0.2948 Method B=0.322 Method B+=0.3484 BM25=0.3009 BM25 + PRF (tuned)=0.3422
+[  833.2s] CV fold 5: Method A=0.2757 Method A+=0.3123 Method B=0.306 Method B+=0.3566 BM25=0.3249 BM25 + PRF (tuned)=0.3595
+[  833.3s] wrote results/results.json

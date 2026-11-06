@@ -53,11 +53,17 @@ info_fetch_A3/
 |   |-- method_a_zone.py       Method A: Boolean zone scores and the weight grid search
 |   |-- features.py            Method B: the 22 features, plus the PRF and zone-BM25 features
 |   `-- method_b_svm.py        Method B: pointwise and pairwise (RankSVM) linear SVM
-`-- results/                   ranked documents for the 68 test queries
-    |-- methodA_test_ranking.txt         final Method A (A+)
-    |-- methodB_test_ranking.txt         final Method B (B+)
-    |-- methodA_basic_test_ranking.txt   Method A exactly as specified
-    `-- methodB_basic_test_ranking.txt   Method B exactly as specified
+`-- results/                   all results (ranked documents for the 68 test queries)
+    |-- methodA_test_ranking.txt            final Method A (A+)
+    |-- methodB_test_ranking.txt            final Method B (B+)
+    |-- methodA_basic_test_ranking.txt      Method A exactly as specified
+    |-- methodB_basic_test_ranking.txt      Method B exactly as specified
+    |-- baseline_bm25_test_ranking.txt      BM25 baseline
+    |-- baseline_bm25_prf_test_ranking.txt  BM25 + pseudo-relevance feedback baseline
+    |-- baseline_vsm_test_ranking.txt       vector space model baseline
+    |-- results.json                        every number in the report's tables
+    |-- per_query_test.csv                  per-query P@10, R@10, F1@10 and AP
+    `-- run_log.txt                         console output of our final run
 ```
 
 **Ranking file format** (TREC run format, top 100 documents per test query, one line per document):
@@ -154,17 +160,19 @@ The last line printed is `wrote results/results.json`.
 
 ### Output
 
-All output goes to `results/`:
+The results of our final run are already included in `results/`. Running the program overwrites these files:
 
 | File | Contents |
 |---|---|
-| `methodA_test_ranking.txt`, `methodB_test_ranking.txt` | final rankings for the test queries (overwrites the included files) |
-| `methodA_basic_test_ranking.txt`, `methodB_basic_test_ranking.txt` | rankings of the methods as specified (overwrites the included files) |
+| `methodA_test_ranking.txt`, `methodB_test_ranking.txt` | final rankings for the test queries |
+| `methodA_basic_test_ranking.txt`, `methodB_basic_test_ranking.txt` | rankings of the methods as specified |
 | `baseline_bm25_test_ranking.txt`, `baseline_bm25_prf_test_ranking.txt`, `baseline_vsm_test_ranking.txt` | baseline rankings |
 | `results.json` | every number in the report's tables |
 | `per_query_test.csv` | per-query P@10, R@10, F1@10 and AP |
 
-All random seeds are fixed, so the ranking files are overwritten with identical results. We checked this: a clean install of this code on Python 3.12 reproduced all four included ranking files byte for byte.
+All random seeds are fixed, so these files are overwritten with identical results. We checked this: a clean install of this code on Python 3.12 reproduced all of them byte for byte.
+
+`run_log.txt` is the saved console output of our final run. The program prints this output to the terminal and does not rewrite the file.
 
 ---
 
